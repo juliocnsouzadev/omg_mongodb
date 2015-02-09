@@ -2,6 +2,7 @@ package br.com.juliocnsouza.dawii.exercicio4.model;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,11 +18,17 @@ public class Worker implements Serializable {
     private String nome;
     private Date dataNascimento;
     private int idade;
+    private String setor;
+    private String funcao;
+    private Double salario;
 
     public Worker( String nome , Date dataNascimento ) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.idade = calculaIdade();
+    }
+
+    public Worker() {
     }
 
     public String getNome() {
@@ -37,8 +44,11 @@ public class Worker implements Serializable {
     }
 
     public String getDataNascimentoText() {
-        DateFormat df = DateFormat.getDateInstance();
-        return df.format( dataNascimento );
+        if ( dataNascimento != null ) {
+            DateFormat df = DateFormat.getDateInstance( DateFormat.MEDIUM );
+            return df.format( dataNascimento );
+        }
+        return "";
     }
 
     public void setDataNascimento( Date dataNascimento ) {
@@ -48,6 +58,35 @@ public class Worker implements Serializable {
     public int getIdade() {
         idade = calculaIdade();
         return idade;
+    }
+
+    public String getSetor() {
+        return setor;
+    }
+
+    public void setSetor( String setor ) {
+        this.setor = setor;
+    }
+
+    public Double getSalario() {
+        return salario;
+    }
+
+    public String getSalarioText() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        return nf.format( salario );
+    }
+
+    public void setSalario( Double salario ) {
+        this.salario = salario;
+    }
+
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao( String funcao ) {
+        this.funcao = funcao;
     }
 
     private int calculaIdade() {

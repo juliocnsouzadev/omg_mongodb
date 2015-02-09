@@ -10,8 +10,9 @@
     <body>
         <h1>Hello World!</h1>
         <form action="/daw2ex4/principal" method="post">
-            <input type="text" name="nome" value="" />
-            <input type="text" name="data" value="" />
+            Nome: <input type="text" name="nome" value="" />
+            <br>
+            Data Nascimento<input type="text" name="data" value="" />
             <input type="submit" value="enviar" name="send" />
         </form>
     </body>
