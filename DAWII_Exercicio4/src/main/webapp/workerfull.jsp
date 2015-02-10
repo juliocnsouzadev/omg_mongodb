@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>TodosDados do Trabalhador</title>
+        <title>Todos Dados do Trabalhador</title>
     </head>
     <body>
         <h2>Todos dados do trabalhador</h2>
