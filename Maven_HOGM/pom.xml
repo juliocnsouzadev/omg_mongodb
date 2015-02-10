@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.juliocnsouza</groupId>
     <artifactId>Maven_HOGM</artifactId>
-    <version>1.0-Maven_HOGM</version>
+    <version>1.1-Maven_HOGM</version>
     <packaging>pom</packaging>
     <dependencies>
         <dependency>
