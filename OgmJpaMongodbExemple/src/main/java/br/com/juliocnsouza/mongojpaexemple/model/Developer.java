@@ -2,13 +2,11 @@ package br.com.juliocnsouza.mongojpaexemple.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Developer.java -> Job:
@@ -18,26 +16,28 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Julio Cesar Nunes de Souza (julio.souza@mobilitasistemas.com.br)
  */
 @Entity
-@XmlRootElement
+@Table( name = "developers" )
 public class Developer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO )
-    private Long id;
+    private String id;
 
+    @Column( name = "nome" )
     private String nome;
 
+    @Column( name = "data_nascimento" )
     @Temporal( javax.persistence.TemporalType.DATE )
     private Date dataNascimento;
 
-    private Set<String> skills;
+    @Column( name = "skills" )
+    private String skills;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId( Long id ) {
+    public void setId( String id ) {
         this.id = id;
     }
 
@@ -57,11 +57,11 @@ public class Developer implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
-    public Set<String> getSkills() {
+    public String getSkills() {
         return skills;
     }
 
-    public void setSkills( Set<String> skills ) {
+    public void setSkills( String skills ) {
         this.skills = skills;
     }
 

@@ -58,6 +58,11 @@
             <version>2.2.2</version>
         </dependency>
         <dependency>
+            <groupId>org.jboss.jbossts</groupId>
+            <artifactId>jbossjta</artifactId>
+            <version>4.16.6.Final</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>

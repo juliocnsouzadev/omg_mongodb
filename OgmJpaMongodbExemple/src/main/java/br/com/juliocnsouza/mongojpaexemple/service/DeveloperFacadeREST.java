@@ -2,9 +2,7 @@ package br.com.juliocnsouza.mongojpaexemple.service;
 
 import br.com.juliocnsouza.mongojpaexemple.model.Developer;
 import com.google.gson.Gson;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -37,10 +35,12 @@ public class DeveloperFacadeREST extends AbstractFacade<Developer> {
         "application/json" } )
     public String criar() {
         Developer dev = new Developer();
+        dev.setId( String.valueOf( new Date().getTime() ) );
         dev.setDataNascimento( new Date( 1992 , 11 , 20 ) );
         dev.setNome( "Rafael" );
-        dev.setSkills( new HashSet<>( Arrays.asList( "JS" , "AngularJS" , "NodeJS" ,
-                                                     "Twitter Bootstrap" , "CSS3" , "Java" ) ) );
+        dev.setSkills( "JS, AngularJS, NodeJS, Twitter Bootstrap, CSS3 , Java" );
+        String json = new Gson().toJson( dev );
+        System.out.println( "Json: " + json );
         super.create( dev );
         return "{resul:'ok'}";
     }
