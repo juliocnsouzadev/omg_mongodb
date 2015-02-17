@@ -46,6 +46,7 @@ public class DeveloperFacadeREST extends AbstractFacade<Developer> {
         dev.setCoffeeTast( new CoffeeTast( "Cappuccino" , Boolean.TRUE ) );
         Project project = new Project( "project 1" );
         dev.setProject( project );
+        dev.setProjects( new HashSet<>( Arrays.asList( project ) ) );
         String json = new Gson().toJson( dev );
         System.out.println( "Json: " + json );
 

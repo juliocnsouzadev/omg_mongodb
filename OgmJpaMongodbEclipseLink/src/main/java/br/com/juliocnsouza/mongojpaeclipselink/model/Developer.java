@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import org.eclipse.persistence.nosql.annotations.DataFormatType;
@@ -49,6 +51,10 @@ public class Developer implements Serializable {
 
     @ManyToOne( fetch = FetchType.EAGER )
     private Project project;
+
+    @ManyToMany( fetch = FetchType.LAZY ,
+                 cascade = CascadeType.ALL )
+    private Set<Project> projects;
 
     public Developer() {
         super();
@@ -100,6 +106,14 @@ public class Developer implements Serializable {
 
     public void setProject( Project project ) {
         this.project = project;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects( Set<Project> projects ) {
+        this.projects = projects;
     }
 
     @Override
