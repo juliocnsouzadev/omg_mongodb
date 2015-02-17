@@ -1,8 +1,12 @@
-package br.com.juliocnsouza.mongojpaexemple.service;
+package br.com.juliocnsouza.mongojpaeclipselink.service;
 
-import br.com.juliocnsouza.mongojpaexemple.model.Developer;
+import br.com.juliocnsouza.mongojpaeclipselink.model.CoffeeTast;
+import br.com.juliocnsouza.mongojpaeclipselink.model.Developer;
+import br.com.juliocnsouza.mongojpaeclipselink.model.Project;
 import com.google.gson.Gson;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -37,8 +41,11 @@ public class DeveloperFacadeREST extends AbstractFacade<Developer> {
         Developer dev = new Developer();
         //dev.setId( "" + new Random().nextInt( 1000 ) );
         dev.setDataNascimento( new Date() );
-        dev.setNome( "Rafael" );
-        dev.setSkills( "JS, AngularJS, NodeJS, Twitter Bootstrap, CSS3 , Java" );
+        dev.setNome( "Rafael Bruno" );
+        dev.setSkills( new HashSet<>( Arrays.asList( "Java" , "JS" , "AngularJS" ) ) );
+        dev.setCoffeeTast( new CoffeeTast( "Cappuccino" , Boolean.TRUE ) );
+        Project project = new Project( "project 1" );
+        dev.setProject( project );
         String json = new Gson().toJson( dev );
         System.out.println( "Json: " + json );
 

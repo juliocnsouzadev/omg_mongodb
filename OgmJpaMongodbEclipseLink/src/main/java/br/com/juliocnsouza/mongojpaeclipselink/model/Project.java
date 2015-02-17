@@ -1,12 +1,13 @@
-package br.com.juliocnsouza.mongojpaexemple.model;
+package br.com.juliocnsouza.mongojpaeclipselink.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
+import javax.persistence.OneToMany;
 import org.eclipse.persistence.nosql.annotations.DataFormatType;
 import org.eclipse.persistence.nosql.annotations.Field;
 import org.eclipse.persistence.nosql.annotations.NoSql;
@@ -20,7 +21,7 @@ import org.eclipse.persistence.nosql.annotations.NoSql;
  */
 @Entity
 @NoSql( dataFormat = DataFormatType.MAPPED )
-public class Developer implements Serializable {
+public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,14 +33,16 @@ public class Developer implements Serializable {
     @Basic
     private String nome;
 
-    @Temporal( javax.persistence.TemporalType.DATE )
-    private Date dataNascimento;
+    @OneToMany( mappedBy = "project" ,
+                fetch = FetchType.EAGER )
+    private Set<Developer> developers;
 
-    @Basic
-    private String skills;
-
-    public Developer() {
+    public Project() {
         super();
+    }
+
+    public Project( String nome ) {
+        this.nome = nome;
     }
 
     public String getId() {
@@ -58,20 +61,12 @@ public class Developer implements Serializable {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
+    public Set<Developer> getDevelopers() {
+        return developers;
     }
 
-    public void setDataNascimento( Date dataNascimento ) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getSkills() {
-        return skills;
-    }
-
-    public void setSkills( String skills ) {
-        this.skills = skills;
+    public void setDevelopers( Set<Developer> developers ) {
+        this.developers = developers;
     }
 
     @Override
@@ -86,10 +81,10 @@ public class Developer implements Serializable {
     @Override
     public boolean equals( Object object ) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if ( !( object instanceof Developer ) ) {
+        if ( !( object instanceof Project ) ) {
             return false;
         }
-        Developer other = ( Developer ) object;
+        Project other = ( Project ) object;
         if ( ( this.id == null && other.id != null ) || ( this.id != null && !this.id.equals(
                 other.id ) ) ) {
             return false;
@@ -99,7 +94,7 @@ public class Developer implements Serializable {
 
     @Override
     public String toString() {
-        return nome + " skills: " + skills;
+        return nome;
     }
 
 }

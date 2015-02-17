@@ -1,4 +1,4 @@
-package br.com.juliocnsouza.mongojpaexemple.service;
+package br.com.juliocnsouza.mongojpaeclipselink.service;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -27,7 +27,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(
             Set<Class<?>> resources) {
-        resources.add( br.com.juliocnsouza.mongojpaexemple.service.DeveloperFacadeREST.class );
+        resources.add(br.com.juliocnsouza.mongojpaeclipselink.service.DeveloperFacadeREST.class );
     }
 
 }

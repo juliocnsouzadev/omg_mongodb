@@ -1,4 +1,4 @@
-package br.com.juliocnsouza.mongojpaexemple.service;
+package br.com.juliocnsouza.mongojpaeclipselink.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
