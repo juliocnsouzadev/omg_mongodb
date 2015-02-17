@@ -2,13 +2,14 @@ package br.com.juliocnsouza.mongojpaexemple.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
-import org.hibernate.annotations.GenericGenerator;
+import org.eclipse.persistence.nosql.annotations.DataFormatType;
+import org.eclipse.persistence.nosql.annotations.Field;
+import org.eclipse.persistence.nosql.annotations.NoSql;
 
 /**
  * Developer.java -> Job:
@@ -18,25 +19,23 @@ import org.hibernate.annotations.GenericGenerator;
  * @author Julio Cesar Nunes de Souza (julio.souza@mobilitasistemas.com.br)
  */
 @Entity
-@Table( name = "developers" )
+@NoSql( dataFormat = DataFormatType.MAPPED )
 public class Developer implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue( generator = "uuid" )
-    @GenericGenerator( name = "uuid" ,
-                       strategy = "uuid2" )
+    @GeneratedValue
+    @Field( name = "_id" )
     private String id;
 
-    @Column( nullable = false )
+    @Basic
     private String nome;
 
     @Temporal( javax.persistence.TemporalType.DATE )
-    @Column( nullable = false )
     private Date dataNascimento;
 
-    @Column( nullable = false )
+    @Basic
     private String skills;
 
     public Developer() {

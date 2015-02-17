@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.juliocnsouza</groupId>
-    <artifactId>OgmJpaMongodbExemple</artifactId>
-    <version>1.0-mongojpaexemple</version>
+    <artifactId>OgmJpaMongodbEclipseLink</artifactId>
+    <version>1.0-mongojpaeclipselink</version>
     <packaging>war</packaging>
 
-    <name>OgmJpaMongodbExemple</name>
+    <name>OgmJpaMongodbEclipseLink</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
