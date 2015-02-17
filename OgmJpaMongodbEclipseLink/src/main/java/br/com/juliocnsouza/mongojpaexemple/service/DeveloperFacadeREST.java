@@ -72,17 +72,19 @@ public class DeveloperFacadeREST extends AbstractFacade<Developer> {
     }
 
     private String getJsonDevs( List<Developer> devs ) {
-        class SimpleBinder {
 
-            List<Developer> devs;
-
-            public SimpleBinder( List<Developer> devs ) {
-                this.devs = devs;
-            }
-        }
         Gson gson = new Gson();
-        String json = gson.toJson( new SimpleBinder( devs ) );
+        String json = gson.toJson( new SimpleBinder( devs ) , SimpleBinder.class );
         return json;
+    }
+
+    class SimpleBinder {
+
+        List<Developer> devs;
+
+        public SimpleBinder( List<Developer> devs ) {
+            this.devs = devs;
+        }
     }
 
 }
