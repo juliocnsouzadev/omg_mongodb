@@ -5,6 +5,7 @@
         <class>br.com.juliocnsouza.mongojpaexemple.model.Developer</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
+            <property name="hibernate.trasaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
             <property name="hibernate.ogm.datastore.provider" value="mongodb"/>
             <property name="hibernate.ogm.datastore.database" value="test"/>
             <property name="hibernate.ogm.datastore.grid_dialect" value="org.hibernate.ogm.datastore.mongodb.MongoDBDialect"/>

@@ -35,14 +35,16 @@ public class DeveloperFacadeREST extends AbstractFacade<Developer> {
         "application/json" } )
     public String criar() {
         Developer dev = new Developer();
-        dev.setId( String.valueOf( new Date().getTime() ) );
-        dev.setDataNascimento( new Date( 1992 , 11 , 20 ) );
+        //dev.setId( "" + new Random().nextInt( 1000 ) );
+        dev.setDataNascimento( new Date() );
         dev.setNome( "Rafael" );
         dev.setSkills( "JS, AngularJS, NodeJS, Twitter Bootstrap, CSS3 , Java" );
         String json = new Gson().toJson( dev );
         System.out.println( "Json: " + json );
-        super.create( dev );
+
+        super.edit( dev );
         return "{resul:'ok'}";
+
     }
 
     @GET
@@ -50,13 +52,18 @@ public class DeveloperFacadeREST extends AbstractFacade<Developer> {
     @Produces( {
         "application/json" } )
     public String encontrar() {
-
-        List<Developer> devs = super.findAll();
-        if ( devs != null ) {
-            return getJsonDevs( devs );
+        try {
+            List<Developer> devs = super.findAll();
+            if ( devs != null ) {
+                return getJsonDevs( devs );
+            }
+        }
+        catch ( Exception e ) {
+            return "{resul:'you loose: " + e.getMessage() + "'}";
         }
 
         return "{resul:'you loose'}";
+
     }
 
     @Override

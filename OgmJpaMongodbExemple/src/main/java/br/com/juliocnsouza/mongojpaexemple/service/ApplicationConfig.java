@@ -26,7 +26,7 @@ public class ApplicationConfig extends Application {
      * getClasses().
      */
     private void addRestResourceClasses(
-            Set<Class<?>> resources ) {
+            Set<Class<?>> resources) {
         resources.add( br.com.juliocnsouza.mongojpaexemple.service.DeveloperFacadeREST.class );
     }
 

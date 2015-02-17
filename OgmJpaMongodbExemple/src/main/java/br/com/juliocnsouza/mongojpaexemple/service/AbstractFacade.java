@@ -3,16 +3,17 @@ package br.com.juliocnsouza.mongojpaexemple.service;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-
 /**
  * AbstractFacade.java -> Job:
+ * <p>
+ * @param <T>
  * @since 13/02/2015
  * @version 1.0
  * @author Julio Cesar Nunes de Souza (julio.souza@mobilitasistemas.com.br)
  */
-
 public abstract class AbstractFacade<T> {
-    private Class<T> entityClass;
+
+    private final Class<T> entityClass;
 
     public AbstractFacade( Class<T> entityClass ) {
         this.entityClass = entityClass;

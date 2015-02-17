@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Developer.java -> Job:
@@ -20,18 +22,26 @@ import javax.persistence.Temporal;
 public class Developer implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
+    @GeneratedValue( generator = "uuid" )
+    @GenericGenerator( name = "uuid" ,
+                       strategy = "uuid2" )
     private String id;
 
-    @Column( name = "nome" )
+    @Column( nullable = false )
     private String nome;
 
-    @Column( name = "data_nascimento" )
     @Temporal( javax.persistence.TemporalType.DATE )
+    @Column( nullable = false )
     private Date dataNascimento;
 
-    @Column( name = "skills" )
+    @Column( nullable = false )
     private String skills;
+
+    public Developer() {
+        super();
+    }
 
     public String getId() {
         return id;
