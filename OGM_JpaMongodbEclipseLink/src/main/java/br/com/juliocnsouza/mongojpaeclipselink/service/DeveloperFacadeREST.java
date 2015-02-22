@@ -14,6 +14,9 @@ import javax.persistence.PersistenceContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * DeveloperFacadeREST.java -> Job:
@@ -86,7 +89,9 @@ public class DeveloperFacadeREST extends AbstractFacade<Developer> {
         return json;
     }
 
-    class SimpleBinder {
+    @XmlRootElement
+    @XmlAccessorType( XmlAccessType.FIELD )
+    public class SimpleBinder {
 
         List<Developer> devs;
 
